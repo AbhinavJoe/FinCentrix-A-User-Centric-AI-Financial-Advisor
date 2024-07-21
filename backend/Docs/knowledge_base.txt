@@ -1,0 +1,168 @@
+
+Financial Principle/Terminology: Compound Interest
+Definition: Compound interest is the addition of interest to the principal sum of a loan or deposit, or in other words, interest on interest.
+Explanation: Compound interest is calculated by multiplying the initial principal amount by one plus the annual interest rate raised to the number of compound periods minus one. For example, if $1,000 is invested at an annual interest rate of 4% compounded annually for 3 years, the future value of the investment would be $1,000 * (1 + 0.04)^3 = $1,124.86.
+
+Financial Principle/Terminology: Diversification
+Definition: Diversification is a risk management strategy that mixes a wide variety of investments within a portfolio.
+Explanation: The rationale behind this technique is that a portfolio constructed of different kinds of investments will, on average, yield higher returns and pose a lower risk than any individual investment found within the portfolio. For example, a diversified portfolio might include stocks, bonds, and real estate.
+
+Financial Principle/Terminology: Liquidity
+Definition: Liquidity refers to how quickly an asset can be converted into cash without affecting its market price.
+Explanation: Cash is considered the most liquid asset, while assets like real estate are relatively illiquid. For example, it's generally easier and quicker to sell shares of a publicly-traded company than to sell a commercial property.
+
+Financial Principle/Terminology: Risk Tolerance
+Definition: Risk tolerance is the degree of variability in investment returns that an investor is willing to withstand in their investment portfolio.
+Explanation: An investor with a high risk tolerance is more likely to invest in high-risk, high-reward assets like stocks. Conversely, someone with a low risk tolerance may prefer safer investments such as bonds or savings accounts.
+
+Financial Principle/Terminology: Time Value of Money
+Definition: The time value of money is the concept that money available at the present time is worth more than the same amount in the future due to its potential earning capacity.
+Explanation: This principle underlies the basis of investing and finance, suggesting that money can earn interest, therefore, having $100 today is more valuable than receiving $100 in a year because today’s money can be invested to earn additional income.
+
+Financial Principle/Terminology: Accounting Principles
+Definition: The rules and guidelines that companies must follow when reporting financial data.
+Explanation: These include the accrual method of accounting, which records income and expenses when they occur rather than when cash changes hands.
+
+Financial Principle/Terminology: Objectivity Principle
+Definition: The principle that financial statements should be prepared objectively, without personal opinion or bias.
+Explanation: This principle ensures that the financial statements of a company are based on verifiable evidence.
+
+Financial Principle/Terminology: Materiality Principle
+Definition: The principle that all material transactions should be accounted for in financial statements.
+Explanation: This principle ensures that all significant financial information that could influence the decisions of users is included in financial statements.
+
+Financial Principle/Terminology: Consistency Principle
+Definition: The principle that a company’s use of accounting principles should be consistent over time.
+Explanation: This principle allows for the comparison of financial statements over time by maintaining consistent accounting methods.
+
+Financial Principle/Terminology: Completeness Principle
+Definition: The principle that financial statements should be complete, including all material transactions.
+Explanation: Ensures comprehensive disclosure of all significant financial information in the financial statements.
+
+Financial Principle/Terminology: Accounting
+Definition: The process of recording, summarizing, and reporting financial transactions.
+Explanation: Accounting involves the systematic recording of business transactions in financial statements, providing insights into a company’s financial health.
+
+Financial Principle/Terminology: Assets
+Definition: Resources owned or controlled by a company, such as cash, inventory, and property.
+Explanation: Assets are economic resources that provide future benefits to the company.
+
+Financial Principle/Terminology: Liabilities
+Definition: Debts or obligations that a company must pay, such as loans and accounts payable.
+Explanation: Liabilities represent what a company owes to others, which must be settled over time through the transfer of assets, provision of services, or other economic benefits.
+
+Financial Principle/Terminology: Equity
+Definition: The value of ownership interest in a company, calculated by deducting liabilities from assets.
+Explanation: Equity represents the owner’s claim on the assets of a business after all liabilities have been deducted.
+
+Financial Principle/Terminology: Revenue
+Definition: Income generated by a company’s operations, such as sales and services.
+Explanation: Revenue is the gross inflow of economic benefits during the period arising in the course of the ordinary activities of an entity.
+
+Financial Principle/Terminology: Accounts Payable
+Definition: Accounts payable is a record of all short-term liabilities that a business needs to pay within 12 months.
+Explanation: These liabilities often include invoices for goods or services, utility bills, and tax payments. This accounting entry helps businesses track what they owe to their suppliers and manage their short-term financial obligations.
+
+Financial Principle/Terminology: Accounts Receivable
+Definition: Accounts receivable is a record of all amounts that customers owe to a business, typically within a short-term period.
+Explanation: This asset account includes all credit sales that have not yet been paid by customers. It is crucial for businesses to manage and collect receivables efficiently to maintain healthy cash flow.
+
+Financial Principle/Terminology: Accrual Accounting
+Definition: Accrual accounting is an accounting method that records revenues and expenses when they are incurred, regardless of when cash transactions occur.
+Explanation: This method provides a more accurate picture of a company's financial condition by recognizing economic events regardless of when cash transactions happen. For example, sales are recorded when the sale is made, not when payment is received.
+
+Financial Principle/Terminology: Amortisation
+Definition: Amortisation is the process of spreading the cost of an intangible asset over its useful life.
+Explanation: Commonly applied to assets like patents and goodwill, amortisation helps businesses gradually write off the value of these assets. For instance, if a company acquires a patent costing $100,000 with a useful life of 10 years, it would amortise $10,000 each year.
+
+Financial Principle/Terminology: Audit
+Definition: An audit is a formal examination of an individual's or organization's accounts or financial situation.
+Explanation: An audit involves the review and verification of accounts and financial information to ensure accuracy and adherence to established accounting standards. Audits can be conducted internally by employees or externally by independent firms.
+
+Financial Principle/Terminology: Mutual Funds
+Definition: Mutual funds pool money from many investors to purchase a broad range of investments, such as stocks, bonds, or real estate.
+Explanation: When selecting mutual funds, it's important to consider the fund’s performance history, fees, and how well it matches your investment goals. Comparing fund performance to market benchmarks can help assess its relative success.
+
+Financial Principle/Terminology: Exchange-Traded Funds (ETFs)
+Definition: ETFs are investment funds traded on stock exchanges, much like stocks. They hold assets such as stocks, commodities, or bonds.
+Explanation: ETFs offer advantages like lower fees, tax efficiency, and the ability to trade them throughout the trading day. They provide a flexible way to gain exposure to diverse investment portfolios.
+
+Financial Principle/Terminology: Real Estate Investments
+Definition: Investing in properties or real estate investment trusts (REITs) to generate income or capital gains.
+Explanation: Real estate investments can diversify a portfolio beyond marketable securities. REITs allow investors to invest in portfolios of real estate assets.
+
+Financial Principle/Terminology: Cryptocurrencies and Alternative Investments
+Definition: Cryptocurrencies are digital or virtual currencies using cryptography for security, often seen as alternative investments.
+Explanation: While offering high potential returns, cryptocurrencies also carry significant risks due to high volatility and regulatory uncertainties.
+
+Financial Principle/Terminology: Investment Strategies
+Definition: Plans and methods implemented to achieve investment goals, including asset allocation among stocks, bonds, and other investments.
+Explanation: Effective investment strategies consider the investor’s risk tolerance and financial goals, emphasizing diversified portfolios to manage risk.
+
+Financial Principle/Terminology: Retirement Planning
+Definition: Planning for retirement by saving and investing to provide income in one's retirement years.
+Explanation: Common retirement savings vehicles include 401(k)s and IRAs, which offer tax advantages to incentivize saving for the long-term.
+
+Financial Principle/Terminology: Debt Management
+Definition: Strategies to manage and repay debts.
+Explanation: Effective debt management involves understanding your total debt burden, prioritizing high-interest debts, and creating a structured payment plan.
+
+Financial Principle/Terminology: Savings Plans
+Definition: Strategies for accumulating a financial reserve.
+Explanation: Savings plans may involve setting aside a fixed amount of money regularly in accounts like savings accounts or emergency funds.
+
+Financial Principle/Terminology: Tax Planning
+Definition: The analysis of a financial situation from a tax perspective, to align financial goals with tax efficiency strategies.
+Explanation: Tax planning strategies may involve making investments that have tax advantages, such as certain retirement plans.
+
+Financial Principle/Terminology: Insurance Needs
+Definition: Assessing the required types and amounts of insurance to protect against various risks.
+Explanation: Key insurance types include life, health, and property insurance, each serving to mitigate specific financial risks associated with loss of life, health costs, and property damage.
+
+Financial Principle/Terminology: Checking Account
+Definition: A bank account where your funds are stored for daily transactions.
+Explanation: Checking accounts are essential for daily financial activities such as paying bills or making purchases. Funds are protected by institutions like the FDIC, ensuring safety against losses. It's advisable to keep only the necessary funds to avoid fees and prevent account overdraft, which can lead to additional charges.
+
+Financial Principle/Terminology: Debit Card
+Definition: A card that provides direct access to your checking account funds.
+Explanation: Debit cards are a convenient alternative to cash and checks, allowing you to perform electronic transactions at stores or withdraw cash from ATMs. While handy, users must manage their spending to avoid overdrafts, as some banks may charge fees for card usage.
+
+Financial Principle/Terminology: Savings Account
+Definition: A bank account intended for storing money saved for future needs.
+Explanation: Unlike checking accounts, savings accounts are used to hold funds not needed for immediate expenses. Banks offer interest on the balance, which helps the savings grow over time. These accounts often have minimum balance requirements and transaction limits.
+
+Financial Principle/Terminology: Interest
+Definition: The cost of borrowing money, typically expressed as a percentage of the principal.
+Explanation: There are two types of interest: simple and compound. Simple interest is calculated on the initial amount of money (principal), while compound interest is calculated on the principal plus any previously earned interest. Compound interest can significantly increase earnings or debt over time.
+
+Financial Principle/Terminology: Loan
+Definition: An agreement where money is lent to another party in exchange for future repayment plus interest.
+Explanation: Loans are used for large purchases or investments, such as buying a home or funding education. The terms of a loan include the interest rate, repayment period, and any necessary collateral. Failure to repay can result in losing the collateral.
+
+Financial Principle/Terminology: Credit Card
+Definition: A card issued by financial institutions allowing the holder to borrow funds within a pre-approved limit for purchases.
+Explanation: Credit cards facilitate purchases and require the holder to pay back the used amount. Failing to pay the full amount monthly leads to interest charges. High interest rates can quickly increase the total debt owed, thus prudent use is critical.
+
+Financial Principle/Terminology: Credit Score
+Definition: A numerical expression based on a level analysis of a person's credit files, representing the creditworthiness of an individual.
+Explanation: A higher credit score often leads to better terms on loans and credit lines. It is calculated using various factors including payment history, amounts owed, and length of credit history. The FICO Score and VantageScore are common models used.
+
+Financial Principle/Terminology: Investment
+Definition: The allocation of resources (usually money) in expectation of receiving a future return.
+Explanation: Investing involves placing money into assets like stocks, bonds, or real estate with the expectation of achieving a profit. While it offers potential for growth, investing also comes with the risk of loss, particularly with higher-risk investments.
+
+Financial Principle/Terminology: Stock
+Definition: A type of security that signifies proportionate ownership in the issuing corporation.
+Explanation: Stock ownership means holding a slice of a company’s equity and earning a share of the profits in the form of dividends. Stocks are traded on exchanges, and their prices can fluctuate widely based on company performance and market conditions.
+
+Financial Principle/Terminology: Bond
+Definition: A fixed income instrument that represents a loan made by an investor to a borrower.
+Explanation: Bonds are typically issued by corporations and governments to raise funds for various projects. Investors receive periodic interest payments and the return of the principal amount upon maturity. Generally considered safer than stocks.
+
+Financial Principle/Terminology: Inflation
+Definition: The rate at which the general level of prices for goods and services is rising, eroding purchasing power.
+Explanation: Inflation affects economies by decreasing the value of money, making goods and services more expensive over time. It can be influenced by factors like supply chain disruptions or increases in money supply.
+
+Financial Principle/Terminology: Taxes
+Definition: Mandatory financial charges imposed by governments on individuals or entities to fund public expenditures.
+Explanation: Taxes are essential for government operations, funding various services like infrastructure, education, and healthcare. They vary by type and jurisdiction, including income, sales, and property taxes.
