@@ -1,9 +1,10 @@
-import Login from "@/app/Authentication/page"
+import Authentication from "@/app/Authentication/layout"
+import Login from "@/app/Authentication/Login/page"
 
 export default function Home() {
   return (
     <main>
-      <Login />
+      <Authentication children={<Login />} />
     </main>
   );
 }

@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 
 const Dashboard = () => {
-    const route = useRouter()
+    const router = useRouter()
     // State for each input
     const [age, setAge] = useState<string>('');
     const [employmentStatus, setEmploymentStatus] = useState<string>('');
@@ -88,7 +88,7 @@ const Dashboard = () => {
                 draggable: true,
                 progress: undefined,
             });
-            route.push('/ChatPage');
+            router.push('/ChatPage');
         } else {
             toast.error('Failed to submit form. Please check your data and try again.', {
                 position: "top-center",
@@ -106,7 +106,7 @@ const Dashboard = () => {
         <div className="min-h-screen flex flex-col items-center p-10">
             <ToastContainer />
             <Logout />
-            <form className="flex flex-col gap-4 w-full max-w-[750px]" onSubmit={handleSubmit}>
+            <form className="flex flex-col gap-4 w-full max-w-[750px] on-scrollbar" onSubmit={handleSubmit}>
                 <h1 className="text-4xl font-bold text-black">Financial Questionnaire</h1>
                 <p className='text-xl font-semibold mb-4'>Answer a few questions first, to get financial advice tailored just for you!</p>
 
