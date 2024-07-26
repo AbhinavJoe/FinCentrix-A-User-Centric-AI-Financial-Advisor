@@ -17,7 +17,7 @@ const Page = () => {
     return (
         <main className='text-black h-screen flex justify-center w-full pt-20 px-10' >
             <Logout />
-            <div className='flex flex-col gap-8 border-4 border-black rounded-lg px-4 py-4 h-fit md:w-[700px]'>
+            <div className='flex flex-col gap-8 border-4 border-black rounded-lg px-4 py-4 h-fit md:w-[700px] bg-white'>
                 <div className='flex flex-col gap-4'>
                     <h1 className='font-bold text-2xl'>Disclaimer</h1>
                     <div className='font-semibold text-base'>

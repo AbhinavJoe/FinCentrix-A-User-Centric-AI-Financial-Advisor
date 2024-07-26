@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { MdMailOutline, MdPersonOutline } from "react-icons/md";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Signup: React.FC = () => {
     const [fullName, setFullName] = useState<string>("");
@@ -27,10 +29,27 @@ const Signup: React.FC = () => {
             if (response.ok) {
                 const data = await response.json();
                 console.log('Signup success:', data);
-                router.push('/Authentication');
+                toast.success(`Account created successfully!`, {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+                setTimeout(() => router.push('/Authentication'), 1000);
             } else {
                 const data = await response.json();
-                setError(data.message);
+                toast.error(`Error: ${data.message}! Please try again.`, {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
             }
         } catch (err) {
             setError('Failed to signup, please try again later.');
@@ -39,6 +58,7 @@ const Signup: React.FC = () => {
 
     return (
         <div className="w-full h-full">
+            <ToastContainer />
             <div className="flex flex-col gap-5">
                 <h1 className="text-4xl font-bold">Sign Up</h1>
                 <div className="text-lg font-semibold">
@@ -101,7 +121,7 @@ const Signup: React.FC = () => {
                     </div>
                 </div>
                 <span className="font-semibold whitespace-break-spaces">Have an account already? <span className="hover:cursor-pointer underline" onClick={() => router.push('/Authentication')}>Log In</span></span>
-                <div className="text-red-500 text-[0.9rem]">{error}</div>
+                <div className="text-red-600 text-base font-semibold">{error}</div>
                 <div className="flex flex-col gap-1 h-[3.8rem] px-4">
                     <button
                         type="submit"

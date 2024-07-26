@@ -57,7 +57,7 @@ const Page = () => {
                 <div ref={bottomOfChat}></div>
             </div>
             {/* Input box fixed below */}
-            <div className='fixed bottom-2 left-3 right-3 md:static md:bottom-auto md:left-auto md:right-auto gradient-border h-[3.125rem]' >
+            <div className='fixed bottom-2 left-3 right-3 md:static md:bottom-auto md:left-auto md:right-auto h-[3.125rem]' >
                 <div className="h-full flex justify-between overflow-hidden">
                     <InputBox addUserMessage={addUserMessage} />
                 </div>

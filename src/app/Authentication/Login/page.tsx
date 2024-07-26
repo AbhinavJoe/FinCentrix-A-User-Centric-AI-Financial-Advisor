@@ -3,6 +3,8 @@ import React, { useState, ChangeEvent } from "react";
 import { MdMailOutline } from "react-icons/md";
 import { useRouter } from "next/navigation";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login: React.FC = () => {
     const [email, setEmail] = useState<string>("");
@@ -24,12 +26,28 @@ const Login: React.FC = () => {
             });
 
             if (response.ok) {
-                // Assume the API sends back a JSON with a success message
-                router.push("Disclaimer");
+                toast.success(`Logged in Successfully!`, {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+                setTimeout(() => router.push('/Disclaimer'), 1000);
             } else {
                 // Handle errors like incorrect credentials
                 const data = await response.json();
-                setError(data.message);
+                toast.error(`Error: ${data.message}! Please check your email and password!`, {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
             }
         } catch (err) {
             setError('Failed to login, please try again later.'); // Handle network errors or server being down
@@ -46,6 +64,7 @@ const Login: React.FC = () => {
 
     return (
         <div className="w-full h-full">
+            <ToastContainer />
             <div className="flex flex-col gap-5">
                 <h1 className="text-4xl font-bold">Log In</h1>
                 <div className="text-lg font-semibold">
@@ -95,7 +114,7 @@ const Login: React.FC = () => {
                     </div>
                 </div>
                 <span className="font-semibold whitespace-break-spaces">Don't have an account? <span className="hover:cursor-pointer underline" onClick={() => router.push('/Authentication/Signup')}>Sign Up</span></span>
-                <div className="text-red-500 text-[0.9rem]">{error}</div>
+                <div className="text-red-600 text-base font-semibold">{error}</div>
                 <div className="flex flex-col gap-1 h-[3.8rem] px-4">
                     <button
                         type="submit"
