@@ -17,7 +17,6 @@ const Dashboard = () => {
     const [monthlyBudget, setMonthlyBudget] = useState<string>('');
     const [insuranceTypes, setInsuranceTypes] = useState<string>('');
     const [retirementAge, setRetirementAge] = useState<string>('');
-    // Additional states would be needed for all other inputs
 
     // Handlers for each input
     const handleAgeChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -67,7 +66,7 @@ const Dashboard = () => {
             existingDebts,
             monthlyBudget,
             insuranceTypes,
-            retirementAge,
+            retirementAge
         };
 
         const response = await fetch('/api/submitForm', {
@@ -218,9 +217,6 @@ const Dashboard = () => {
                     onChange={handleRetirementAgeChange}
                     className="form-styles"
                 />
-                {/* Additional inputs for other questions */}
-
-                {/* Submit Button */}
                 <button
                     type="submit"
                     className="mt-4 py-2 bg-black text-white font-bold text-xl rounded-xl"
