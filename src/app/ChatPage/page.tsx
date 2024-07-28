@@ -27,7 +27,7 @@ const Page = () => {
         setIsThinking(true);
 
         try {
-            const res = await fetch('http://192.168.1.114:5000/chat', {
+            const res = await fetch('http://192.168.1.121:5000/chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
