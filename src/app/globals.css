@@ -24,6 +24,8 @@
 
 body {
     background-color: rgb(168, 197, 124);
+    /* background-color: #A8C57C; */
+
 }
 
 .scroll-container {
@@ -111,4 +113,10 @@ input[type="range"]::-ms-track {
     /* Removes additional styling in IE */
     color: transparent;
     /* Removes additional styling in IE */
+}
+
+.loginBG {
+    background: url('../assets/loginBG.png') no-repeat right fixed;
+    background-size: contain;
+    z-index: 1000;
 }

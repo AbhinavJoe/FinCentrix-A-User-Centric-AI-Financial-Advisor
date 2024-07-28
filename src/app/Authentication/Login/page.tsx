@@ -25,6 +25,8 @@ const Login: React.FC = () => {
                 body: JSON.stringify({ email, password })
             });
 
+            const data = await response.json();
+
             if (response.ok) {
                 toast.success(`Logged in Successfully!`, {
                     position: "top-center",
@@ -35,10 +37,9 @@ const Login: React.FC = () => {
                     draggable: true,
                     progress: undefined,
                 });
-                setTimeout(() => router.push('/Disclaimer'), 1000);
+                setTimeout(() => router.push(`/Disclaimer?username=${data.username}`), 1000);
             } else {
                 // Handle errors like incorrect credentials
-                const data = await response.json();
                 toast.error(`Error: ${data.message}! Please check your email and password!`, {
                     position: "top-center",
                     autoClose: 3000,
@@ -82,7 +83,7 @@ const Login: React.FC = () => {
                                 type="email"
                                 value={email}
                                 onChange={handleEmailChange}
-                                className="h-full grow bg-transparent outline-none border-4 border-black rounded-xl pl-3 placeholder:text-lg placeholder:text-black/60"
+                                className="h-full grow bg-white outline-none border-4 border-black rounded-xl pl-3 placeholder:text-lg placeholder:text-black/60"
                                 placeholder="Enter Email"
                                 required
                             />
@@ -95,7 +96,7 @@ const Login: React.FC = () => {
                                 type={showPassword ? "text" : "password"}
                                 value={password}
                                 onChange={handlePasswordChange}
-                                className="h-full grow bg-transparent outline-none border-4 border-black rounded-xl pl-3 placeholder:text-lg placeholder:text-black/60"
+                                className="h-full grow bg-white outline-none border-4 border-black rounded-xl pl-3 placeholder:text-lg placeholder:text-black/60"
                                 placeholder="Enter Password"
                                 required
                             />

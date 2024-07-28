@@ -1,22 +1,25 @@
 "use client";
 import Logout from '@/components/Logout/index';
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import React, { useState } from 'react'
 import { ImCheckboxChecked, ImCheckboxUnchecked } from 'react-icons/im'
 
 const Page = () => {
     const [checkbox, setCheckbox] = useState<boolean>(false);
     const router = useRouter()
+    const searchParams = useSearchParams();
+    const username = searchParams?.get('username');
+    
     const handleCheckBox = () => {
         setCheckbox(!checkbox)
         setTimeout(() => {
-            router.push('/Dashboard')
+            router.push(`/Dashboard?username=${username}`)
         }, 350);
     }
 
     return (
         <main className='text-black h-screen flex justify-center w-full pt-20 px-10' >
-            <Logout />
+            <Logout page='Disclaimer'/>
             <div className='flex flex-col gap-8 border-4 border-black rounded-lg px-4 py-4 h-fit md:w-[700px] bg-white'>
                 <div className='flex flex-col gap-4'>
                     <h1 className='font-bold text-2xl'>Disclaimer</h1>

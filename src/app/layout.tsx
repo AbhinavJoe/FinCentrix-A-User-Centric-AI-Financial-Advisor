@@ -13,7 +13,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="text-black text-base select-none">{children}</body>
+      <body className="text-black text-base select-none overflow-x-hidden">
+        {children}
+      </body>
     </html>
   );
 }

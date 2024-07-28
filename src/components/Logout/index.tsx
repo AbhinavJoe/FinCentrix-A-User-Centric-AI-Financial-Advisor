@@ -1,7 +1,11 @@
 import { useRouter } from "next/navigation";
 import { CgLogOut } from "react-icons/cg";
 
-const Logout = () => {
+interface LogoutProps {
+    page: string;
+}
+
+const Logout: React.FC<LogoutProps> = ({ page }) => {
     const router = useRouter();
 
     const handleLogout = async () => {
@@ -16,8 +20,8 @@ const Logout = () => {
     };
 
     return (
-        <div className="absolute top-5 left-5 text-4xl">
-            <CgLogOut onClick={handleLogout} className="hover:cursor-pointer" />
+        <div className={`${page == "" ? "static" : "absolute"} top-5 left-5 text-4xl`}>
+            <CgLogOut onClick={handleLogout} className="hover:cursor-pointer hover:text-green-900" />
         </div>
     );
 }

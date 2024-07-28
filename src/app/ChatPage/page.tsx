@@ -1,24 +1,31 @@
 "use client";
+import { useEffect, useRef, useState } from "react";
 import UserMessage from "@/app/ChatPage/UserMessage/index";
-import InputBox from "@/app/ChatPage/InputBox/index"
+import InputBox from "@/app/ChatPage/InputBox/index";
 import AiMessage from "@/app/ChatPage/AIMessage/index";
-import { useRef, useState } from "react";
-import Logout from "@/components/Logout";
+import Loader from "@/app/ChatPage/Loader/index";
+import NavBar from "@/app/ChatPage/NavBar/index";
+import { useSearchParams } from "next/navigation";
+import SideBar from "@/app/ChatPage/SideBar/index";
 
 const Page = () => {
     const [elements, setElements] = useState<JSX.Element[]>([]);
-    const [isThinking, setIsThinking] = useState<boolean>(false)
+    const [isThinking, setIsThinking] = useState<boolean>(false);
+    const searchParams = useSearchParams();
+    const username = searchParams ? searchParams.get('username') : null;
 
     const bottomOfChat = useRef<HTMLDivElement>(null);
-    // function to scroll to bottomfeedbackid
-    const scrollToBottom: () => void = () => {
-        bottomOfChat.current?.scrollIntoView({ behavior: "smooth" });
-    };
+
+    useEffect(() => {
+        if (bottomOfChat.current) {
+            bottomOfChat.current.scrollIntoView({ behavior: "smooth" });
+        }
+    }, [elements]);
 
     const addUserMessage = async (userPrompt: string) => {
-        setElements((prevElements) => [...prevElements, <UserMessage text={userPrompt} />]);
-        scrollToBottom();
-        setIsThinking(true)
+        const newUserMessage = <UserMessage text={userPrompt} />;
+        setElements((prevElements) => [...prevElements, newUserMessage]);
+        setIsThinking(true);
 
         try {
             const res = await fetch('http://127.0.0.1:5000/chat', {
@@ -34,32 +41,36 @@ const Page = () => {
             }
 
             const data = await res.json();
-            const aiResponse = data.message.content;  // Ensure the response format aligns with how your API sends it
-
-            setElements((prevElements) => [...prevElements, <AiMessage text={aiResponse} />]);
-            scrollToBottom();
-            setIsThinking(false)
-
+            const aiResponse = <AiMessage text={data.messages} />;
+            setElements((prevElements) => [...prevElements, aiResponse]);
         } catch (error) {
             console.error('Error:', error);
+            const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred';
+            const errorResponse = <AiMessage text={`Error: ${errorMessage}`} />;
+            setElements((prevElements) => [...prevElements, errorResponse]);
+        } finally {
+            setIsThinking(false);
         }
     }
 
-
     return (
-        <div className="min-h-screen flex flex-col justify-between gap-1 px-5 pb-3 pt-5">
-            <Logout />
-            <div className="flex flex-col gap-3 overflow-y-auto text-base md:max-h-[87vh] max-h-[82vh] scroll-container">
-                {elements}
-                <div className="pl-2">
-                    {isThinking ? <span className="text-lg font-semibold">Analyzing...</span> : null}
-                </div>
-                <div ref={bottomOfChat}></div>
+        <div className="h-[100vh] flex">
+            <div className="w-1/4 h-full">
+                <SideBar username={username || ''} />
             </div>
-            {/* Input box fixed below */}
-            <div className='fixed bottom-2 left-3 right-3 md:static md:bottom-auto md:left-auto md:right-auto h-[3.125rem]' >
-                <div className="h-full flex justify-between overflow-hidden">
-                    <InputBox addUserMessage={addUserMessage} />
+            <div className="w-3/4 max-h-[94vh] h-full">
+                <NavBar />
+                <div className="w-full h-full flex flex-col justify-between gap-1 px-5 pb-3 pt-5">
+                    <div className="flex flex-col gap-3 overflow-y-auto text-base md:max-h-[87vh] max-h-[82vh] scroll-container overflow-x-hidden">
+                        {elements}
+                        {isThinking ? <Loader /> : null}
+                        <div ref={bottomOfChat}></div>
+                    </div>
+                    <div className='fixed bottom-2 left-3 right-3 md:static md:bottom-auto md:left-auto md:right-auto h-[3.125rem]'>
+                        <div className="h-full flex justify-between overflow-hidden">
+                            <InputBox addUserMessage={addUserMessage} isDisabled={isThinking} />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

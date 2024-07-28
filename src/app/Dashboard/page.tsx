@@ -2,10 +2,19 @@
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Logout from '@/components/Logout';
-import { useRouter } from 'next/navigation';
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 
 const Dashboard = () => {
+    const searchParams = useSearchParams();
+    const username = searchParams?.get('username');
+
+    useEffect(() => {
+        if (username) {
+            console.log("Logged in as:", username);
+        }
+    }, [username]);
+
     const router = useRouter()
     // State for each input
     const [age, setAge] = useState<string>('');
@@ -55,9 +64,47 @@ const Dashboard = () => {
         setRetirementAge(event.target.value);
     };
 
-    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    // Fetch form data on component mount
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch(`/api/getFormData?username=${username}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            if (response.ok) {
+                const data = await response.json();
+                setAge(data.age);
+                setEmploymentStatus(data.employmentStatus);
+                setAnnualIncome(data.annualIncome);
+                setFinancialGoals(data.financialGoals);
+                setRiskTolerance(data.riskTolerance);
+                setExistingDebts(data.existingDebts);
+                setMonthlyBudget(data.monthlyBudget);
+                setInsuranceTypes(data.insuranceTypes);
+                setRetirementAge(data.retirementAge);
+            } else {
+                toast.error('Failed to load form data.', {
+                    position: "top-center",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            }
+        };
+        fetchData();
+    }, []);
+
+    // Handlers remain unchanged
+
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const formData = {
+            username, // Include the username in the formData
             age,
             employmentStatus,
             annualIncome,
@@ -78,7 +125,7 @@ const Dashboard = () => {
         });
 
         if (response.ok) {
-            toast.success('Data stored successfully!', {
+            toast.success('Data updated successfully!', {
                 position: "top-center",
                 autoClose: 3000,
                 hideProgressBar: false,
@@ -87,7 +134,7 @@ const Dashboard = () => {
                 draggable: true,
                 progress: undefined,
             });
-            router.push('/ChatPage');
+            router.push(`/ChatPage?username=${username}`);
         } else {
             toast.error('Failed to submit form. Please check your data and try again.', {
                 position: "top-center",
@@ -104,7 +151,7 @@ const Dashboard = () => {
     return (
         <div className="min-h-screen flex flex-col items-center p-10">
             <ToastContainer />
-            <Logout />
+            <Logout page='Dashboard' />
             <form className="flex flex-col gap-4 w-full max-w-[750px] on-scrollbar" onSubmit={handleSubmit}>
                 <h1 className="text-4xl font-bold text-black">Financial Questionnaire</h1>
                 <p className='text-xl font-semibold mb-4'>Answer a few questions first, to get financial advice tailored just for you!</p>
