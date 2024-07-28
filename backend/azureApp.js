@@ -2,13 +2,23 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import { ChromaClient, DefaultEmbeddingFunction } from 'chromadb';
-import { Ollama } from 'ollama';
+import { AzureOpenAI } from 'openai';
+import { DefaultAzureCredential, getBearerTokenProvider } from '@azure/identity';
 import { addFilesToCollection } from './data_loader.js';
+import 'dotenv/config';
 
 const app = express();
 const port = 5000;
 
-const ollama = new Ollama({ host: process.env.OLLAMA_URL || 'http://localhost:11434' });
+const scope = "https://cognitiveservices.azure.com/.default";
+const azureADTokenProvider = getBearerTokenProvider(new DefaultAzureCredential(), scope);
+const deployment = "bob-gpt-35-turbo-1106";
+const apiVersion = "2024-04-01-preview";
+const endpoint = process.env["AZURE_OPENAI_ENDPOINT"]
+const apiKey = process.env["AZURE_OPENAI_API_KEY"]
+const model = "gpt-35-turbo"
+const openAIClient = new AzureOpenAI({ apiKey, deployment, apiVersion, endpoint });
+
 const client = new ChromaClient({
     path: process.env.CHROMA_URL || "http://localhost:8000"
 });
@@ -45,14 +55,29 @@ Provide the reasoning behind your advice here. Use bullet points or numbered lis
 
 Please ensure to use appropriate Markdown formatting for headers, lists, and emphasis. If you do not know the answer, clearly state that you do not know. Generate the entire output in not more than 150 words.`;
 
-    console.log(final_query);
-    const response = await ollama.chat({
-        model: 'gemma:2b-instruct-q5_0',
-        messages: [{ role: 'user', content: final_query }]
-    });
-    console.log(response.message.content);
-    res.send(response);
+    try {
+        const response = await openAIClient.chat.completions.create({
+            messages: [
+                { role: 'user', content: final_query }
+            ],
+            model: model,
+        },
+            // stre
+        );
+
+        if (response.choices && response.choices.length > 0) {
+            const messages = response.choices.map(choice => choice.message.content).join('\n');
+            console.log(messages);
+            res.json({ messages: messages }); // Send JSON response
+        } else {
+            res.status(500).json({ error: "No response from AI model." });
+        }
+    } catch (error) {
+        console.error("Error in AI response:", error);
+        res.status(500).json({ error: "Failed to get AI response." });
+    }
 });
+
 
 async function getOrCreateCollection(name) {
     const collection = await client.getOrCreateCollection({
