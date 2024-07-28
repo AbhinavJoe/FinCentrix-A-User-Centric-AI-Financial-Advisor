@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import UserMessage from "@/app/ChatPage/UserMessage/index";
 import InputBox from "@/app/ChatPage/InputBox/index";
 import AiMessage from "@/app/ChatPage/AIMessage/index";
-import Loader from "@/app/ChatPage/Loader/index";
 import NavBar from "@/app/ChatPage/NavBar/index";
 import { useSearchParams } from "next/navigation";
 import SideBar from "@/app/ChatPage/SideBar/index";
@@ -28,7 +27,7 @@ const Page = () => {
         setIsThinking(true);
 
         try {
-            const res = await fetch('http://127.0.0.1:5000/chat', {
+            const res = await fetch('http://192.168.1.114:5000/chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -58,13 +57,13 @@ const Page = () => {
             <div className="w-1/4 h-full">
                 <SideBar username={username || ''} />
             </div>
-            <div className="w-3/4 max-h-[94vh] h-full">
+            <div className="w-3/4 max-h-[94.5vh] h-full">
                 <NavBar />
                 <div className="w-full h-full flex flex-col justify-between gap-1 px-5 pb-3 pt-5">
                     <div className="flex flex-col gap-3 overflow-y-auto text-base md:max-h-[87vh] max-h-[82vh] scroll-container overflow-x-hidden">
                         {elements}
-                        {isThinking ? <Loader /> : null}
                         <div ref={bottomOfChat}></div>
+                        {isThinking ? <span className="text-lg font-semibold">Analyzing...</span> : null}
                     </div>
                     <div className='fixed bottom-2 left-3 right-3 md:static md:bottom-auto md:left-auto md:right-auto h-[3.125rem]'>
                         <div className="h-full flex justify-between overflow-hidden">
