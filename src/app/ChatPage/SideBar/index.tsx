@@ -1,5 +1,5 @@
 import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import FinancialNews from '@/app/ChatPage/SideBar/FinancialNews/index';
@@ -28,34 +28,50 @@ const SideBar = ({ username }: { username: string }) => {
     const [exchangeRate, setExchangeRate] = useState<ExchangeRate | null>(null);
     const [loading, setLoading] = useState(true);
 
+    // Logout handler
+    const handleLogout = useCallback(async () => {
+        const response = await fetch('/api/logout', {
+            method: 'POST'
+        });
+        if (response.ok) {
+            router.push('/');
+        } else {
+            console.error('Failed to log out');
+        }
+    }, [router]);
+
     // Fetch user data
     useEffect(() => {
         if (!username) {
-            toast.error('Username not found, redirecting...');
-            setTimeout(() => { router.push('/login'); }, 3000); // Redirect after showing toast
+            toast.error('No username detected, redirecting to login...');
+            setTimeout(() => {
+                handleLogout();  // Ensure user is logged out
+            }, 2000);
             return;
         }
 
         const fetchData = async () => {
-            const response = await fetch(`/api/getFormData?username=${username}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-            if (response.ok) {
+            try {
+                const response = await fetch(`/api/getFormData?username=${username}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                if (!response.ok) throw new Error('Failed to fetch user data');
+
                 const data = await response.json();
                 setUserData(data);
-                setLoading(false); // Update loading state here
-            } else {
-                console.error('Failed to fetch user data');
+                setLoading(false);  // Update loading state here
+            } catch (error) {
+                console.error(error);
                 toast.error('Failed to fetch user data. Logging out...');
                 handleLogout();  // Trigger logout if data fetch fails
             }
         };
 
         fetchData();
-    }, [username, router]);
+    }, [username, handleLogout]);
 
     // Fetch currency exchange rate
     useEffect(() => {
@@ -64,9 +80,7 @@ const SideBar = ({ username }: { username: string }) => {
             const url = `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=INR&apikey=${apiKeyCurrency}`;
             try {
                 const response = await fetch(url);
-                if (!response.ok) {
-                    throw new Error('Failed to fetch exchange rate');
-                }
+                if (!response.ok) throw new Error('Failed to fetch exchange rate');
                 const data = await response.json();
                 const rateInfo = data["Realtime Currency Exchange Rate"];
                 setExchangeRate({
@@ -81,18 +95,6 @@ const SideBar = ({ username }: { username: string }) => {
 
         fetchCurrencyRate();
     }, []);
-
-    const handleLogout = async () => {
-        const response = await fetch('/api/logout', {
-            method: 'POST'
-        });
-        if (response.ok) {
-            router.push('/');
-        } else {
-            console.error('Failed to log out');
-            toast.error('Logout failed. Please try again.');
-        }
-    };
 
     if (loading) return <div className='bg-white flex flex-col gap-2 shadow-xl p-4 h-[100vh] border-4 border-black rounded-xl'>Loading...</div>;
 
@@ -118,7 +120,7 @@ const SideBar = ({ username }: { username: string }) => {
                 </div>
             </div>
             <div className='h-fit'>
-                <h3 className="font-bold text-xl mb-2 underline">Today's Financial News</h3>
+                <h3 className="font-bold text-xl mb-2 underline">Today&apos; Financial News</h3>
                 {exchangeRate && (
                     <div className="mb-2 font-bold">
                         <h3>Exchange Rate ({exchangeRate.fromCurrency} to {exchangeRate.toCurrency}): {exchangeRate.rate}</h3>

@@ -114,7 +114,7 @@ const Login: React.FC = () => {
                         </div>
                     </div>
                 </div>
-                <span className="font-semibold whitespace-break-spaces">Don't have an account? <span className="hover:cursor-pointer underline" onClick={() => router.push('/Authentication/Signup')}>Sign Up</span></span>
+                <span className="font-semibold whitespace-break-spaces">Don&apos;t have an account? <span className="hover:cursor-pointer underline" onClick={() => router.push('/Authentication/Signup')}>Sign Up</span></span>
                 <div className="text-red-600 text-base font-semibold">{error}</div>
                 <div className="flex flex-col gap-1 h-[3.8rem] px-4">
                     <button

@@ -13,7 +13,8 @@ const FinancialNews = () => {
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const response = await fetch(`https://newsapi.org/v2/top-headlines?category=business&country=in&apiKey=3005b93903fc4f43b76f4cb8f18216fa`);
+                const apiKeyNews = process.env.NEXT_PUBLIC_NEWSAPI_API_KEY
+                const response = await fetch(`https://newsapi.org/v2/top-headlines?category=business&country=in&apiKey=${apiKeyNews}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch news');
                 }

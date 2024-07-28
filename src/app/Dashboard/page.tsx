@@ -97,7 +97,7 @@ const Dashboard = () => {
             }
         };
         fetchData();
-    }, []);
+    }, [username]);
 
     // Handlers remain unchanged
 
