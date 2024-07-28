@@ -3,9 +3,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Logout from '@/components/Logout';
 import { useRouter, useSearchParams } from 'next/navigation';
-import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, FormEvent, Suspense, useEffect, useState } from 'react';
 
-const Dashboard = () => {
+const Page = () => {
     const searchParams = useSearchParams();
     const username = searchParams?.get('username');
 
@@ -274,5 +274,13 @@ const Dashboard = () => {
         </div>
     );
 }
+
+const Dashboard = () => {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <Page />
+        </Suspense>
+    );
+};
 
 export default Dashboard;

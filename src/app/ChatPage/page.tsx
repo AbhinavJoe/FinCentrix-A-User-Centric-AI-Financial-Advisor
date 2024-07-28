@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import UserMessage from "@/app/ChatPage/UserMessage/index";
 import InputBox from "@/app/ChatPage/InputBox/index";
 import AiMessage from "@/app/ChatPage/AIMessage/index";
@@ -76,4 +76,12 @@ const Page = () => {
     );
 }
 
-export default Page;
+const ChatPage = () => {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <Page />
+        </Suspense>
+    );
+};
+
+export default ChatPage;
