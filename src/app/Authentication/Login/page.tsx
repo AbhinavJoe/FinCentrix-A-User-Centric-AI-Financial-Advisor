@@ -103,12 +103,12 @@ const Login: React.FC = () => {
                             {showPassword ? (
                                 <AiOutlineEye
                                     onClick={() => setShowPassword(false)}
-                                    className="text-4xl text-black"
+                                    className="text-4xl text-black hover:cursor-pointer"
                                 />
                             ) : (
                                 <AiOutlineEyeInvisible
                                     onClick={() => setShowPassword(true)}
-                                    className="text-4xl text-black"
+                                    className="text-4xl text-black hover:cursor-pointer"
                                 />
                             )}
                         </div>
