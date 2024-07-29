@@ -1,5 +1,6 @@
 import { useRouter } from "next/navigation";
 import { CgLogOut } from "react-icons/cg";
+import Cookies from 'js-cookie';
 
 interface LogoutProps {
     page: string;
@@ -13,6 +14,7 @@ const Logout: React.FC<LogoutProps> = ({ page }) => {
             method: 'POST'
         });
         if (response.ok) {
+            Cookies.remove('token', { path: '/' });
             router.push('/');
         } else {
             console.error('Failed to log out');

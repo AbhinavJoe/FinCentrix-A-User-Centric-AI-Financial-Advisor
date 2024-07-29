@@ -12,8 +12,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/js-cookie": "^3.0.6",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.4.5",
+    "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.5.1",
     "next": "14.2.4",
