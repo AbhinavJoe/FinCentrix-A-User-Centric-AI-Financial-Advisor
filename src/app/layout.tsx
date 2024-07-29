@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import ClientWrapper from "@/components/ClientWrapper";
 
 export const metadata: Metadata = {
   title: "FinCentrix",
@@ -15,9 +14,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="text-black text-base select-none overflow-x-hidden">
-        <ClientWrapper>
-          {children}
-        </ClientWrapper>
+        {children}
       </body>
     </html>
   );

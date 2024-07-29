@@ -6,6 +6,9 @@ import AiMessage from "@/app/ChatPage/AIMessage/index";
 import NavBar from "@/app/ChatPage/NavBar/index";
 import { useSearchParams } from "next/navigation";
 import SideBar from "@/app/ChatPage/SideBar/index";
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const Page = () => {
     const [elements, setElements] = useState<JSX.Element[]>([]);
@@ -27,7 +30,7 @@ const Page = () => {
         setIsThinking(true);
 
         try {
-            const res = await fetch(`http://192.168.2.109:5000/chat`, {
+            const res = await fetch(process.env.NEXT_PUBLIC_BACKEND_VM_URL + 'chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
