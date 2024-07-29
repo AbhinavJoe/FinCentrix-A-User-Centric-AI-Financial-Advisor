@@ -120,7 +120,7 @@ const SideBar = ({ username }: { username: string }) => {
                 </div>
             </div>
             <div className='h-fit'>
-                <h3 className="font-bold text-xl mb-2 underline">Today&apos; Financial News</h3>
+                <h3 className="font-bold text-xl mb-2 underline">Today&apos;s Financial News</h3>
                 {exchangeRate && (
                     <div className="mb-2 font-bold">
                         <h3>Exchange Rate ({exchangeRate.fromCurrency} to {exchangeRate.toCurrency}): {exchangeRate.rate}</h3>
