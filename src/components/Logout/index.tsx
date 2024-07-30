@@ -14,8 +14,9 @@ const Logout: React.FC<LogoutProps> = ({ page }) => {
             method: 'POST'
         });
         if (response.ok) {
-            Cookies.remove('token', { path: '/' });
             router.push('/');
+            // Cookies.remove('token', { path: '/' });
+            // router.push('/');
         } else {
             console.error('Failed to log out');
         }
