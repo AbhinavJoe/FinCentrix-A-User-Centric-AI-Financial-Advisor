@@ -87,7 +87,7 @@ const Page = () => {
             } else {
                 toast.error('Failed to load form data.', {
                     position: "top-center",
-                    autoClose: 3000,
+                    autoClose: 2000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: true,
@@ -127,7 +127,7 @@ const Page = () => {
         if (response.ok) {
             toast.success('Data updated successfully!', {
                 position: "top-center",
-                autoClose: 3000,
+                autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
@@ -138,7 +138,7 @@ const Page = () => {
         } else {
             toast.error('Failed to submit form. Please check your data and try again.', {
                 position: "top-center",
-                autoClose: 3000,
+                autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
@@ -153,7 +153,7 @@ const Page = () => {
             <ToastContainer />
             <Logout page='Dashboard' />
             <form className="flex flex-col gap-4 w-full max-w-[750px] on-scrollbar" onSubmit={handleSubmit}>
-                <h1 className="text-4xl font-bold text-black">Financial Questionnaire</h1>
+                <h1 className="text-4xl font-bold text-[#e4e4e0]">Financial Questionnaire</h1>
                 <p className='text-xl font-semibold mb-4'>Answer a few questions first, to get financial advice tailored just for you!</p>
 
                 {/* Age */}
@@ -203,7 +203,7 @@ const Page = () => {
                     name="finGoals"
                     value={financialGoals}
                     onChange={handleFinancialGoalsChange}
-                    className="h-24 px-4 py-2 border-4 border-black rounded-xl"
+                    className="h-18 px-4 py-2 border-2 border-[#43443f] rounded-xl bg-[#393937]/60"
                     placeholder="e.g., saving for retirement, buying a home, funding education"
                 />
 
@@ -266,7 +266,7 @@ const Page = () => {
                 />
                 <button
                     type="submit"
-                    className="mt-4 py-2 bg-black text-white font-bold text-xl rounded-xl"
+                    className="mt-4 py-2 bg-[#da7756]/70 hover:bg-[#da7756] text-black font-bold text-xl rounded-xl"
                 >
                     Submit
                 </button>

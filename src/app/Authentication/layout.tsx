@@ -6,8 +6,8 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
     return (
-        <div className='flex h-[100vh] w-[100vw] text-black overflow-hidden'>
-            <div className="flex flex-col items-center gap-10 w-[35%] h-[100vh] border-4 border-black p-6">
+        <div className='flex h-[100vh] w-[100vw] overflow-hidden'>
+            <div className="flex flex-col bg-[#393937]/60 items-center gap-10 w-[35%] h-[100vh] border-r-2 border-[#595a57] p-6">
                 {children}
             </div>
             <div className='loginBG w-[65%]'>

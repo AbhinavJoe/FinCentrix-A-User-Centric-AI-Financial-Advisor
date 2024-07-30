@@ -24,7 +24,7 @@ const Logout: React.FC<LogoutProps> = ({ page }) => {
 
     return (
         <div className={`${page == "" ? "static" : "absolute"} top-5 left-5 text-4xl`}>
-            <CgLogOut onClick={handleLogout} className="hover:cursor-pointer hover:text-green-900" />
+            <CgLogOut onClick={handleLogout} className="hover:cursor-pointer text-[#da7756]/70 hover:text-[#da7756]" />
         </div>
     );
 }

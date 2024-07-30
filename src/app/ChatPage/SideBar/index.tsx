@@ -96,14 +96,14 @@ const SideBar = ({ username }: { username: string }) => {
         fetchCurrencyRate();
     }, []);
 
-    if (loading) return <div className='bg-white flex flex-col gap-2 shadow-xl p-4 h-[100vh] border-4 border-black rounded-xl'>Loading...</div>;
+    if (loading) return <div className='bg-[#393937]/60 flex flex-col gap-2 shadow-xl p-4 h-[100vh] border-r-2 border-[#43443f]'>Loading...</div>;
 
     return (
-        <div className="bg-white flex flex-col gap-3 shadow-xl px-4 h-[100vh] border-4 border-black">
+        <div className="bg-[#393937]/60 flex flex-col gap-3 shadow-xl px-4 h-[100vh] border-r-2 border-[#43443f]">
             <ToastContainer />
             <div className='h-fit'>
                 <h3 className="text-xl font-bold mb-4 underline">Your Information</h3>
-                <div className='overflow-y-auto h-[30vh]'>
+                <div className='scroll-container overflow-y-auto h-[30vh]'>
                     {userData && (
                         <>
                             <p><strong>Age:</strong> {userData.age}</p>
@@ -120,7 +120,7 @@ const SideBar = ({ username }: { username: string }) => {
                 </div>
             </div>
             <div className='h-fit'>
-                <h3 className="font-bold text-xl mb-2 underline">Today&apos;s Financial News</h3>
+                <h3 className="font-bold text-xl mb-2 underline">Banking Details</h3>
                 {exchangeRate && (
                     <div className="mb-2 font-bold">
                         <h3>Exchange Rate ({exchangeRate.fromCurrency} to {exchangeRate.toCurrency}): {exchangeRate.rate}</h3>

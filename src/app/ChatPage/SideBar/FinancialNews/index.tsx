@@ -33,8 +33,8 @@ const FinancialNews = () => {
     if (loading) return <div>Loading news...</div>;
 
     return (
-        <div className='h-[47.5vh] max-h-full overflow-y-auto'>
-            <div className='overflow-y-auto'>
+        <div className='h-[47.5vh] max-h-full scroll-container overflow-y-auto'>
+            <div className=''>
                 {articles.map((article, index) => (
                     <div key={index} className="mb-4">
                         <a href={article.url} target="_blank" rel="noopener noreferrer" className="font-semibold">

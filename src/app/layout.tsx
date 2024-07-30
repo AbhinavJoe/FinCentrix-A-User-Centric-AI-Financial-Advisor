@@ -13,7 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="text-black text-base select-none overflow-x-hidden">
+      <body className="text-[#e4e4e0] text-base select-none overflow-x-hidden">
         {children}
       </body>
     </html>

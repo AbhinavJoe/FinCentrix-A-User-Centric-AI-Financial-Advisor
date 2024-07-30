@@ -33,7 +33,7 @@ const Signup: React.FC = () => {
                 console.log('Signup success:', data);
                 toast.success(`Account created successfully!`, {
                     position: "top-center",
-                    autoClose: 3000,
+                    autoClose: 2000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: true,
@@ -45,7 +45,7 @@ const Signup: React.FC = () => {
                 setError(data.message);
                 toast.error(`Error: ${data.message}`, {
                     position: "top-center",
-                    autoClose: 3000,
+                    autoClose: 2000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: true,
@@ -58,7 +58,7 @@ const Signup: React.FC = () => {
             setError('Failed to signup, please try again later.');
             toast.error('Failed to signup, please try again later.', {
                 position: "top-center",
-                autoClose: 3000,
+                autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
@@ -88,7 +88,7 @@ const Signup: React.FC = () => {
                                 type="text"
                                 value={fullName}
                                 onChange={(e) => setFullName(e.target.value)}
-                                className="h-full grow bg-white outline-none border-4 border-black rounded-xl pl-3 placeholder:text-lg placeholder:text-black/60"
+                                className="h-full grow bg-white outline-none border-2 border-[#43443f] rounded-xl pl-3 placeholder:text-lg placeholder:text-black/70"
                                 placeholder="Full Name"
                                 required
                             />
@@ -98,7 +98,7 @@ const Signup: React.FC = () => {
                                 type="text"
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
-                                className="h-full grow bg-white outline-none border-4 border-black rounded-xl pl-3 placeholder:text-lg placeholder:text-black/60"
+                                className="h-full grow bg-white outline-none border-2 border-[#43443f] rounded-xl pl-3 placeholder:text-lg placeholder:text-black/70"
                                 placeholder="Username"
                                 required
                             />
@@ -111,11 +111,11 @@ const Signup: React.FC = () => {
                                 type="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="h-full grow bg-white outline-none border-4 border-black rounded-xl pl-3 placeholder:text-lg placeholder:text-black/60"
+                                className="h-full grow bg-white outline-none border-2 border-[#43443f] rounded-xl pl-3 placeholder:text-lg placeholder:text-black/70"
                                 placeholder="Enter Email"
                                 required
                             />
-                            <MdMailOutline className="text-4xl text-black" />
+                            <MdMailOutline className="text-4xl text-[#e4e4e0]" />
                         </div>
                     </div>
                     <div className="h-[3.8rem]">
@@ -124,30 +124,30 @@ const Signup: React.FC = () => {
                                 type={showPassword ? "text" : "password"}
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                className="h-full grow bg-white outline-none border-4 border-black rounded-xl pl-3 placeholder:text-lg placeholder:text-black/60"
+                                className="h-full grow bg-white outline-none border-2 border-[#43443f] rounded-xl pl-3 placeholder:text-lg placeholder:text-black/70"
                                 placeholder="Enter Password"
                                 required
                             />
                             {showPassword ? (
                                 <AiOutlineEye
                                     onClick={() => setShowPassword(false)}
-                                    className="text-4xl text-black hover:cursor-pointer"
+                                    className="text-4xl text-[#e4e4e0] hover:cursor-pointer"
                                 />
                             ) : (
                                 <AiOutlineEyeInvisible
                                     onClick={() => setShowPassword(true)}
-                                    className="text-4xl text-black hover:cursor-pointer"
+                                    className="text-4xl text-[#e4e4e0] hover:cursor-pointer"
                                 />
                             )}
                         </div>
                     </div>
                 </div>
-                <span className="font-semibold whitespace-break-spaces">Have an account already? <span className="hover:cursor-pointer underline" onClick={() => router.push('/Authentication')}>Log In</span></span>
+                <span className="font-semibold whitespace-break-spaces text-[#e4e4e0]">Have an account already? <span className="hover:cursor-pointer hover:text-[#da7756] underline" onClick={() => router.push('/Authentication')}>Log In</span></span>
                 <div className="text-red-600 text-base font-semibold">{error}</div>
                 <div className="flex flex-col gap-1 h-[3.8rem] px-4">
                     <button
                         type="submit"
-                        className="h-full w-full items-center justify-center bg-green-600 rounded-xl hover:bg-green-800 border-4 border-black"
+                        className="h-full w-full items-center justify-center bg-[#da7756]/70 rounded-xl hover:bg-[#da7756] border-2 border-[#43443f]"
                     >
                         <span className="font-bold text-xl">Sign Up</span>
                     </button>

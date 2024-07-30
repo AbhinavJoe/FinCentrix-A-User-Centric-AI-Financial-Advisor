@@ -8,6 +8,7 @@ import { useSearchParams } from "next/navigation";
 import SideBar from "@/app/ChatPage/SideBar/index";
 
 const Page = () => {
+    const [isEmpty, setIsEmpty] = useState<boolean>(true);
     const [elements, setElements] = useState<JSX.Element[]>([]);
     const [isThinking, setIsThinking] = useState<boolean>(false);
     const searchParams = useSearchParams();
@@ -24,6 +25,7 @@ const Page = () => {
     const addUserMessage = async (userPrompt: string) => {
         const newUserMessage = <UserMessage text={userPrompt} />;
         setElements((prevElements) => [...prevElements, newUserMessage]);
+        setIsEmpty(false);
         setIsThinking(true);
 
         try {
@@ -61,6 +63,9 @@ const Page = () => {
                 <NavBar />
                 <div className="w-full h-full flex flex-col justify-between gap-1 px-5 pb-3 pt-5">
                     <div className="flex flex-col gap-3 overflow-y-auto text-base md:max-h-[87vh] max-h-[82vh] scroll-container overflow-x-hidden">
+                        {isEmpty ? <div className="text-[#da7756]/70 text-xl font-bold text-center">
+                            Ask away! FinCentrix will advice on all your finanical qualms
+                        </div> : null}
                         {elements}
                         <div ref={bottomOfChat}></div>
                         {isThinking ? <span className="text-lg font-semibold">Analyzing...</span> : null}
