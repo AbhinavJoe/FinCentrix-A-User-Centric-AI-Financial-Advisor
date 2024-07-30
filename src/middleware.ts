@@ -9,7 +9,7 @@ export function middleware(request: NextRequest) {
 
   const path = request.nextUrl.pathname.toLowerCase();
   const isPublicPath = ["/", "/authentication", "/authentication/login", "/authentication/signup"].includes(path);
-  const token = request.cookies.get("token");
+  let token = request.cookies.get("token");
 
   if (isPublicPath && token) {
     return NextResponse.redirect(new URL('/Disclaimer', request.url));
