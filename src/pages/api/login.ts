@@ -38,7 +38,8 @@ const login = async (req: NextApiRequest, res: NextApiResponse) => {
 
         const token = jwt.sign(tokenPayload, process.env.JWT_SECRET!, { expiresIn: "1d" });
 
-        res.setHeader('Set-Cookie', `token=${token}; HttpOnly; Path=/; Max-Age=86400; SameSite=Strict; ${process.env.NODE_ENV === 'production' ? ' Secure;' : ''}`);
+        // res.setHeader('Set-Cookie', `token=${token}; HttpOnly; Path=/; Max-Age=86400; SameSite=Strict; ${process.env.NODE_ENV === 'production' ? ' Secure;' : ''}`);
+        res.setHeader('Set-Cookie', `token=${token}; HttpOnly; Path=/; Max-Age=86400; SameSite=Strict;`);
 
         return res.status(200).json({
             message: "Login successful",
