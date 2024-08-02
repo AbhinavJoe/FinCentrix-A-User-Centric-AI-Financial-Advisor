@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  bobrag:
+    build: .
+    ports:
+      - "5000:5000"
+    depends_on:
+      - chromadb
+    env_file:
+      - .env
+    environment:
+      CHROMA_URL: "http://chromadb:8000"
+    networks:
+      - my_network
+    restart: always
+
+  chromadb:
+    image: chromadb/chroma
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./chroma:/chroma/chroma
+    environment:
+      IS_PERSISTENT: "TRUE"
+      ANONYMIZED_TELEMETRY: "TRUE"
+    networks:
+      - my_network
+    restart: always
+
+networks:
+  my_network:
+    driver: bridge
