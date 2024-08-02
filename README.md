@@ -5,8 +5,8 @@
 ## Accessing the application
 - Currently the application is setup such that users will not be able to login with their email and password after signup unless they are approved by the admin (me).
 - For this, a sample user email and password has been provided below to access the application:
-  - Email:
-  - Password:
+  - Email: bob.user@outlook.com
+  - Password: user@bob
 
 ## Features
 - Automated Real-Time Responses: Uses generative AI to provide immediate, accurate responses to customer queries.
