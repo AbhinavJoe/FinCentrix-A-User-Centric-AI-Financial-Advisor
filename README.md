@@ -1,6 +1,7 @@
 # FinCentrix - A User-Centric AI Financial Advisor
 - Deployment - https://jolly-beach-09f149d00.5.azurestaticapps.net/
-- The complexity of financial markets, combined with the rapid growth of the AI Industry especially Generative AI, creates a spot where both can be used together in harmony to make well-informed financial decisions. This is where FinCentrix comes into the picture. FinCentrix, an AI-driven financial advisory solution is set to revolutionize how people access financial guidance. By making personalized advice accessible and affordable, it addresses a crucial need in today's complex financial landscape. For individuals, it's like having a knowledgeable financial advisor on call, helping them make smarter money decisions anytime. 
+- The complexity of financial markets, combined with the rapid growth of the AI Industry especially Generative AI, creates a spot where both can be used together in harmony to make well-informed financial decisions. This is where FinCentrix comes into the picture. FinCentrix, an AI-driven financial advisory solution is set to revolutionize how people access financial guidance. By making personalized advice accessible and affordable, it addresses a crucial need in today's complex financial landscape. For individuals, it's like having a knowledgeable financial advisor on call, helping them make smarter money decisions anytime.
+- NOTE: If the AI Reponse does not come in the chat page, then the LLM Backend Virtual Machine is probably deallocated(stopped) to conserve Azure Credits :(
 
 ## Accessing the application
 - Currently the application is setup such that users will not be able to login with their email and password after signup unless they are approved by the admin (me).
