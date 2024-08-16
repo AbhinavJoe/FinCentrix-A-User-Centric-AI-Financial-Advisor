@@ -16,7 +16,7 @@ const port = 5000;
 // Azure Blob Storage setup
 const account = process.env.ACCOUNT_NAME
 const accountSas = process.env.ACCOUNT_SAS
-const containerName = process.env.CONTAINER
+const containerName = 'aidata'
 
 const blobServiceClient = new BlobServiceClient(
     `https://${account}.blob.core.windows.net/?${accountSas}`,
@@ -44,7 +44,6 @@ const emb_fn = async function customEmbeddingFunction(texts) {
             input: texts,
             model: embDeployment
         });
-        console.log('Embeddings Response:', embeddingsResponse.data);
         return embeddingsResponse.data.map(embed => embed.embedding);
     } catch (error) {
         console.error('Failed to get embeddings:', error);
@@ -74,34 +73,53 @@ app.post('/chat', async (req, res) => {
     const dbres = await queryCollection(collection, 5, [query]);
     const context = dbres.documents[0];
     console.log('Context:', context)
-    const final_query = `
-You are FinCentrix - a world-class Financial Advisor. You are smart and reliable and can give financial advice specific to the user, including autonomously processing bank statements and deciding when to display transaction data in tables if relevant. Deliver your financial advice in Markdown format. Begin with the advice itself, followed by a detailed explanation of the reasoning behind the recommendation. Form your response based on the user's question and the retrieved context: ${context}
 
-If the user query is a basic conversation or about non-financial matters, respond:
-> **I'm a financial advisor, so it'd be best if we talk about financial matters.** 🎩✨ While I'm great at conjuring financial wisdom, I'm here to provide monetary advice. Can we try something a bit more... monetary?
+    let systemQuery, userQuery;
+    const isFinanceQuery = await analyzeQuery(query);
 
-Financial Advice:
-Your advice here in markdown format. Start directly with the advice, ensuring it is specific and actionable. If the answer is not clear from the context, respond in a witty and humorous way, acknowledging the mismatch and don't provide an explanation in this case. Example of a non-financial query response:
-> **Oops!** 🎩✨ It looks like your question wandered into the wrong magic show! While I'm great at conjuring financial wisdom, this question doesn't fit the bill. Can we try something a bit more... monetary?
+    if (isFinanceQuery) {
+        systemQuery = `
+            You are FinCentrix, an AI assistant for Bank of Baroda, who is a world-class financial advisor. 
+            You are smart and reliable and can give financial advice specific to the user, including autonomously processing bank statements and displaying transaction data in tables if relevant or asked by the user. 
+            Deliver your financial advice in Markdown format. Begin with the advice itself, followed by a detailed explanation of the reasoning behind the advice. 
+            Form your response based on the user's question and the retrieved context: ${context}
 
-Transaction Details:
-If deemed relevant, generate a table showing pertinent transactions from the user bank statement here using Markdown table formatting to clarify the financial situation or illustrate the advice.
+            ## Financial Advice:
+            Your advice here in markdown format. Start directly with the advice, ensuring it is specific and actionable. If the answer is not clear from the context, respond in a witty and humorous way, acknowledging the mismatch and don't provide an explanation in this case.
 
-Why This Advice:
-Here, explain the logic behind your advice. Use bullet points or numbered lists to make your explanation clear and easy to follow. Base your reasoning on the user's query and the provided context.
+            ## Transaction Details:
+            If deemed relevant or if the user asks for it, generate a table showing pertinent transactions from the user bank statement here using Markdown table formatting to clarify the financial situation or illustrate the advice.
 
-Please adhere to Markdown formatting for headers, lists, and emphasis.`;
+            ## Why This Advice:
+            Here, explain the logic behind your advice. Use bullet points or numbered lists to make your explanation clear and easy to follow. Base your reasoning on the user's query and the provided context.
 
+            Please adhere to Markdown formatting for headers, lists, and emphasis, and always stay in character as FinCentrix, an AI assistant for Bank of Baroda, who is a world-class financial advisor.
+        `;
+        userQuery = query;
+    } else {
+        systemQuery = `You are FinCentrix, an AI assistant for Bank of Baroda, who is a world-class financial advisor.`;
+        userQuery = `
+            You are FinCentrix, an AI assistant for Bank of Baroda, who is a world-class financial advisor.
+            Respond to the following user query in a friendly and helpful manner:
+
+            User query: ${query}
+
+            If the user is making small talk or asking an unrelated question, respond accordingly and steer the conversation back to finance.
+    
+            Remember to always stay in character as FinCentrix, an AI assistant for Bank of Baroda, who is a world-class financial advisor.
+            `;
+    }
 
     try {
         const response = await azureOpenAIClient.chat.completions.create({
             messages: [
-                { role: 'system', content: final_query },
-                { role: 'user', content: query }
+                { role: 'system', content: systemQuery },
+                { role: 'user', content: userQuery }
             ],
             model: deployment,
+            temperature: 0.9,
+            max_tokens: 300
         });
-
 
         if (response.choices && response.choices.length > 0) {
             const messages = response.choices.map(choice => choice.message.content).join('\n');
@@ -116,6 +134,40 @@ Please adhere to Markdown formatting for headers, lists, and emphasis.`;
     }
 });
 
+async function analyzeQuery(query) {
+    const prompt = `
+    Determine if the following user input is a specific query about finacial advice or anything related to finance or banks, or a general chat message:
+
+    User input: ${query}
+
+    Respond with only 'FINANCE' if it's a query about finance or financial advice, or 'CHAT' if it's a general chat message.
+    `;
+    try {
+        const response = await azureOpenAIClient.chat.completions.create({
+            messages: [
+                { role: 'system', content: "You are an AI assistant that categorizes user inputs into one of the two: 'FINANCE' or 'CHAT'." },
+                { role: 'user', content: prompt }
+            ],
+            model: deployment,
+            temperature: 0.2,
+            max_tokens: 10
+        });
+
+        if (response && response.choices && response.choices.length > 0) {
+            const messageContent = response.choices[0].message.content.trim();
+            console.log("Categorized as:", messageContent);
+            return messageContent === 'FINANCE';
+        } else {
+            console.error("No valid response from AI Model or no choices available");
+            return false;
+        }
+    } catch (error) {
+        console.error(`Error determining query type: ${error}`);
+        return false;
+    }
+}
+
+
 async function getOrCreateCollection(name) {
     const collection = await client.getOrCreateCollection({
         name,
@@ -123,7 +175,6 @@ async function getOrCreateCollection(name) {
             description: "Private Docs",
             "hnsw:space": "l2"
         },
-        // embeddingFunction: emb_fn,
         embeddingFunction: {
             generate: emb_fn
         }
@@ -136,7 +187,6 @@ async function queryCollection(collection, nResults, queryTexts) {
         nResults,
         queryTexts,
     });
-    console.log('Query Results:', results);
     return results;
 }
 
