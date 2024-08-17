@@ -67,8 +67,8 @@ const Login: React.FC = () => {
         <div className="w-full h-full">
             <ToastContainer />
             <div className="flex flex-col gap-5">
-                <h1 className="text-4xl font-bold">Log In</h1>
-                <div className="text-lg font-semibold">
+                <h1 className="md:text-4xl text-2xl font-bold">Log In</h1>
+                <div className="md:text-lg text-base font-semibold">
                     Login to start getting personalized financial advice on problems that haunt you!
                 </div>
             </div>
@@ -76,7 +76,7 @@ const Login: React.FC = () => {
                 onSubmit={handleLogin}
                 className="flex flex-col gap-5 w-full mt-5 h-full text-black text-lg"
             >
-                <div className="flex flex-col gap-10">
+                <div className="flex flex-col md:gap-10 gap-5">
                     <div className="h-[3.8rem]">
                         <div className="h-full flex items-center gap-2 px-4 rounded-[5px]">
                             <input
@@ -114,7 +114,7 @@ const Login: React.FC = () => {
                         </div>
                     </div>
                 </div>
-                <span className="font-semibold whitespace-break-spaces text-[#e4e4e0]">Don&apos;t have an account? <span className="hover:cursor-pointer hover:text-[#da7756] underline" onClick={() => router.push('/Authentication/Signup')}>Sign Up</span></span>
+                <span className="font-semibold whitespace-break-spaces md:text-lg text-base text-[#e4e4e0]">Don&apos;t have an account? <span className="hover:cursor-pointer hover:text-[#da7756] underline" onClick={() => router.push('/Authentication/Signup')}>Sign Up</span></span>
                 <div className="text-red-600 text-base font-semibold">{error}</div>
                 <div className="flex flex-col gap-1 h-[3.8rem] px-4">
                     <button

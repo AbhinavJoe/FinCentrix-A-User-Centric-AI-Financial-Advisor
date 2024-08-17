@@ -152,7 +152,7 @@ const Page = () => {
         <div className="min-h-screen flex flex-col items-center p-10">
             <ToastContainer />
             <Logout page='Dashboard' />
-            <form className="flex flex-col gap-4 w-full max-w-[750px] on-scrollbar" onSubmit={handleSubmit}>
+            <form className="flex flex-col gap-4 w-full max-w-[750px] on-scrollbar md:pt-0 pt-10" onSubmit={handleSubmit}>
                 <h1 className="text-4xl font-bold text-[#e4e4e0]">Financial Questionnaire</h1>
                 <p className='text-xl font-semibold mb-4'>Answer a few questions first, to get financial advice tailored just for you!</p>
 

@@ -72,8 +72,8 @@ const Signup: React.FC = () => {
         <div className="w-full h-full">
             <ToastContainer />
             <div className="flex flex-col gap-5">
-                <h1 className="text-4xl font-bold">Sign Up</h1>
-                <div className="text-lg font-semibold">
+                <h1 className="md:text-4xl text-2xl font-bold">Sign Up</h1>
+                <div className="md:text-lg text-base font-semibold">
                     Sign up to start receiving personalized financial advice!
                 </div>
             </div>
@@ -81,9 +81,9 @@ const Signup: React.FC = () => {
                 onSubmit={handleSignup}
                 className="flex flex-col gap-5 w-full mt-5 h-full text-black text-lg"
             >
-                <div className="flex flex-col gap-10">
-                    <div className="flex h-[3.8rem]">
-                        <div className="h-full w-1/2 flex items-center gap-2 px-4 rounded-[5px]">
+                <div className="flex flex-col md:gap-10 gap-5">
+                    <div className="flex md:flex-row flex-col md:h-[3.8rem] h-fit md:gap-0 gap-5">
+                        <div className="md:h-full h-[3rem] md:w-1/2 flex items-center gap-2 px-4 rounded-[5px]">
                             <input
                                 type="text"
                                 value={fullName}
@@ -93,7 +93,7 @@ const Signup: React.FC = () => {
                                 required
                             />
                         </div>
-                        <div className="h-full w-1/2 flex items-center gap-2 px-4 rounded-[5px]">
+                        <div className="md:h-full h-[3rem] md:w-1/2 flex items-center gap-2 px-4 rounded-[5px]">
                             <input
                                 type="text"
                                 value={username}
@@ -105,7 +105,7 @@ const Signup: React.FC = () => {
                         </div>
                     </div>
 
-                    <div className="h-[3.8rem]">
+                    <div className="md:h-[3.8rem] h-[3rem]">
                         <div className="h-full flex items-center gap-2 px-4 rounded-[5px]">
                             <input
                                 type="email"
@@ -118,7 +118,7 @@ const Signup: React.FC = () => {
                             <MdMailOutline className="text-4xl text-[#e4e4e0]" />
                         </div>
                     </div>
-                    <div className="h-[3.8rem]">
+                    <div className="md:h-[3.8rem] h-[3rem]">
                         <div className="h-full flex items-center gap-2 px-4 rounded-[5px]">
                             <input
                                 type={showPassword ? "text" : "password"}
@@ -142,7 +142,7 @@ const Signup: React.FC = () => {
                         </div>
                     </div>
                 </div>
-                <span className="font-semibold whitespace-break-spaces text-[#e4e4e0]">Have an account already? <span className="hover:cursor-pointer hover:text-[#da7756] underline" onClick={() => router.push('/Authentication')}>Log In</span></span>
+                <span className="font-semibold whitespace-break-spaces md:text-lg text-base text-[#e4e4e0]">Have an account already? <span className="hover:cursor-pointer hover:text-[#da7756] underline" onClick={() => router.push('/Authentication')}>Log In</span></span>
                 <div className="text-red-600 text-base font-semibold">{error}</div>
                 <div className="flex flex-col gap-1 h-[3.8rem] px-4">
                     <button
