@@ -153,11 +153,11 @@ const Page = () => {
             <ToastContainer />
             <Logout page='Dashboard' />
             <form className="flex flex-col gap-4 w-full max-w-[750px] on-scrollbar md:pt-0 pt-10" onSubmit={handleSubmit}>
-                <h1 className="text-4xl font-bold text-[#e4e4e0]">Financial Questionnaire</h1>
-                <p className='text-xl font-semibold mb-4'>Answer a few questions first, to get financial advice tailored just for you!</p>
+                <h1 className="md:text-4xl text-2xl font-bold text-[#e4e4e0]">Financial Questionnaire</h1>
+                <p className='md:text-xl text-lg font-semibold mb-4'>Answer a few questions first, to get financial advice tailored just for you!</p>
 
                 {/* Age */}
-                <label htmlFor="age" className="font-semibold text-lg">What is your age?</label>
+                <label htmlFor="age" className="font-semibold md:text-lg text-base">What is your age?</label>
                 <input
                     type="number"
                     id="age"
@@ -169,7 +169,7 @@ const Page = () => {
                 />
 
                 {/* Employment Status */}
-                <label htmlFor="employmentStatus" className="font-semibold text-lg">What is your employment status?</label>
+                <label htmlFor="employmentStatus" className="font-semibold md:text-lg text-base">What is your employment status?</label>
                 <select
                     id="employmentStatus"
                     name="employmentStatus"
@@ -186,7 +186,7 @@ const Page = () => {
                 </select>
 
                 {/* Annual Income */}
-                <label htmlFor="annualIncome" className="font-semibold text-lg">What is your annual income? (in INR)</label>
+                <label htmlFor="annualIncome" className="font-semibold md:text-lg text-base">What is your annual income? (in INR)</label>
                 <input
                     type="number"
                     id="annualIncome"
@@ -197,7 +197,7 @@ const Page = () => {
                     required
                 />
                 {/* Financial Goals */}
-                <label htmlFor="finGoals" className="font-semibold text-lg">What are your primary financial goals?</label>
+                <label htmlFor="finGoals" className="font-semibold md:text-lg text-base">What are your primary financial goals? (long-term or short-term)</label>
                 <textarea
                     id="finGoals"
                     name="finGoals"
@@ -208,7 +208,7 @@ const Page = () => {
                 />
 
                 {/* Risk Tolerance */}
-                <label htmlFor="riskTolerance" className="font-semibold text-lg">What is your risk tolerance?</label>
+                <label htmlFor="riskTolerance" className="font-semibold md:text-lg text-base">What is your risk tolerance?</label>
                 <input
                     type="range"
                     id="riskTolerance"
@@ -221,7 +221,7 @@ const Page = () => {
                 />
 
                 {/* Financial Health */}
-                <label htmlFor="existingDebts" className="font-semibold text-lg">Do you have any existing debts?</label>
+                <label htmlFor="existingDebts" className="font-semibold md:text-lg text-base">Do you have any existing debts?</label>
                 <input
                     type="text"
                     id="existingDebts"
@@ -232,7 +232,7 @@ const Page = () => {
                     placeholder="e.g., mortgage, student loan, credit card"
                 />
 
-                <label htmlFor="monthlyBudget" className="font-semibold text-lg">What is your monthly budget? (in Rs)</label>
+                <label htmlFor="monthlyBudget" className="font-semibold md:text-lg text-base">What is your monthly budget? (in Rs)</label>
                 <input
                     type="number"
                     id="monthlyBudget"
@@ -243,7 +243,7 @@ const Page = () => {
                 />
 
                 {/* Insurance Needs */}
-                <label htmlFor="insuranceTypes" className="font-semibold text-lg">What types of insurance do you have?</label>
+                <label htmlFor="insuranceTypes" className="font-semibold md:text-lg text-base">What types of insurance do you have?</label>
                 <input
                     type="text"
                     id="insuranceTypes"
@@ -255,7 +255,7 @@ const Page = () => {
                 />
 
                 {/* Retirement Planning */}
-                <label htmlFor="retirementAge" className="font-semibold text-lg">At what age do you plan to retire?</label>
+                <label htmlFor="retirementAge" className="font-semibold md:text-lg text-base">At what age do you plan to retire?</label>
                 <input
                     type="number"
                     id="retirementAge"

@@ -9,6 +9,7 @@ import SideBar from "@/app/ChatPage/SideBar/index";
 
 const Page = () => {
     const [isEmpty, setIsEmpty] = useState<boolean>(true);
+    const [isSmallScreen, setIsSmallScreen] = useState(false);
     const [elements, setElements] = useState<JSX.Element[]>([]);
     const [isThinking, setIsThinking] = useState<boolean>(false);
     const searchParams = useSearchParams();
@@ -54,21 +55,37 @@ const Page = () => {
         }
     }
 
+    useEffect(() => {
+        const handleResize = () => {
+            setIsSmallScreen(window.innerWidth < 768); // md breakpoint is 768px in Tailwind
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        // Calling handler right away so state gets updated with initial window size
+        handleResize();
+
+        // Cleaning up listener on unmount
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
         <div className="h-[100vh] flex">
-            <div className="w-1/4 h-full">
-                <SideBar username={username || ''} />
-            </div>
-            <div className="w-3/4 max-h-[94.5vh] h-full">
+            {!isSmallScreen ?
+                <div className="w-1/4 h-full">
+                    <SideBar username={username || ''} />
+                </div> : null}
+
+            <div className="md:w-3/4 w-100vw max-h-[94.5vh] h-full">
                 <NavBar />
-                <div className="w-full h-full flex flex-col justify-between gap-1 px-5 pb-3 pt-5">
+                <div className="w-full h-full flex flex-col justify-between gap-1 pl-5 pr-2 pb-3 pt-5">
                     <div className="flex flex-col gap-3 overflow-y-auto text-base md:max-h-[87vh] max-h-[82vh] scroll-container overflow-x-hidden">
-                        {isEmpty ? <div className="text-[#da7756]/70 text-xl font-bold text-center">
+                        {isEmpty ? <div className="text-[#da7756]/70 md:text-xl text-lg font-bold text-center">
                             Ask away! FinCentrix will advice on all your finanical qualms
                         </div> : null}
                         {elements}
                         <div ref={bottomOfChat}></div>
-                        {isThinking ? <span className="text-lg font-semibold">Analyzing...</span> : null}
+                        {isThinking ? <span className="md:text-lg text-base font-semibold">Analyzing...</span> : null}
                     </div>
                     <div className='fixed bottom-2 left-3 right-3 md:static md:bottom-auto md:left-auto md:right-auto h-[3.125rem]'>
                         <div className="h-full flex justify-between overflow-hidden">

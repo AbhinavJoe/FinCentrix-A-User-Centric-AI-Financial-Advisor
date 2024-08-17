@@ -87,7 +87,7 @@ const Login: React.FC = () => {
                                 placeholder="Enter Email"
                                 required
                             />
-                            <MdMailOutline className="text-4xl text-[#e4e4e0]" />
+                            <MdMailOutline className="md:text-4xl text-4xl text-[#e4e4e0]" />
                         </div>
                     </div>
                     <div className="h-[3.8rem]">
@@ -103,12 +103,12 @@ const Login: React.FC = () => {
                             {showPassword ? (
                                 <AiOutlineEye
                                     onClick={() => setShowPassword(false)}
-                                    className="text-4xl text-[#e4e4e0] hover:cursor-pointer"
+                                    className="md:text-4xl text-4xl text-[#e4e4e0] hover:cursor-pointer"
                                 />
                             ) : (
                                 <AiOutlineEyeInvisible
                                     onClick={() => setShowPassword(true)}
-                                    className="text-4xl text-[#e4e4e0] hover:cursor-pointer"
+                                    className="md:text-4xl text-4xl text-[#e4e4e0] hover:cursor-pointer"
                                 />
                             )}
                         </div>
