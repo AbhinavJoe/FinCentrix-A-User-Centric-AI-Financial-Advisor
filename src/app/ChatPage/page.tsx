@@ -6,10 +6,11 @@ import AiMessage from "@/app/ChatPage/AIMessage/index";
 import NavBar from "@/app/ChatPage/NavBar/index";
 import { useSearchParams } from "next/navigation";
 import SideBar from "@/app/ChatPage/SideBar/index";
+import Loading from "@/components/Loading";
 
 const Page = () => {
     const [isEmpty, setIsEmpty] = useState<boolean>(true);
-    const [isSmallScreen, setIsSmallScreen] = useState(false);
+    const [isSmallScreen, setIsSmallScreen] = useState<boolean | null>(null);
     const [elements, setElements] = useState<JSX.Element[]>([]);
     const [isThinking, setIsThinking] = useState<boolean>(false);
     const searchParams = useSearchParams();
@@ -60,23 +61,33 @@ const Page = () => {
             setIsSmallScreen(window.innerWidth < 768); // md breakpoint is 768px in Tailwind
         };
 
-        window.addEventListener('resize', handleResize);
-
         // Calling handler right away so state gets updated with initial window size
         handleResize();
+
+        window.addEventListener('resize', handleResize);
 
         // Cleaning up listener on unmount
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    if (isSmallScreen === null) {
+        // If the screen size hasn't been determined, don't render anything
+        return (
+            <div className="flex justify-center">
+                <Loading />
+            </div>
+        );
+    }
+
     return (
         <div className="h-[100vh] flex">
-            {!isSmallScreen ?
+            {!isSmallScreen ? (
                 <div className="w-1/4 h-full">
                     <SideBar username={username || ''} />
-                </div> : null}
+                </div>
+            ) : null}
 
-            <div className="md:w-3/4 w-100vw max-h-[94.5vh] h-full">
+            <div className="md:w-3/4 w-full max-h-[94.5vh] h-full">
                 <NavBar />
                 <div className="w-full h-full flex flex-col justify-between gap-1 pl-5 pr-2 pb-3 pt-5">
                     <div className="flex flex-col gap-3 overflow-y-auto text-base md:max-h-[87vh] max-h-[82vh] scroll-container overflow-x-hidden">

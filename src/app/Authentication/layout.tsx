@@ -1,4 +1,5 @@
 "use client";
+import Loading from '@/components/Loading';
 import React, { ReactNode, useState, useEffect } from 'react';
 
 interface LayoutProps {
@@ -6,17 +7,17 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-    const [isSmallScreen, setIsSmallScreen] = useState(false);
+    const [isSmallScreen, setIsSmallScreen] = useState<boolean | null>(null);
 
     useEffect(() => {
         const handleResize = () => {
             setIsSmallScreen(window.innerWidth < 768); // md breakpoint is 768px in Tailwind
         };
 
-        window.addEventListener('resize', handleResize);
-
         // Calling handler right away so state gets updated with initial window size
         handleResize();
+
+        window.addEventListener('resize', handleResize);
 
         // Cleaning up listener on unmount
         return () => window.removeEventListener('resize', handleResize);
@@ -28,6 +29,16 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <p className="md:text-3xl text-lg">Your Personalized AI Financial Advisor</p>
         </div>
     );
+
+    if (isSmallScreen === null) {
+        // If the screen size hasn't been determined, don't render anything
+        // return null;
+        return (
+            <div className="flex justify-center">
+                <Loading />
+            </div>
+        );
+    }
 
     return (
         <div className='flex md:flex-row flex-col h-[100vh] w-[100vw] overflow-hidden'>
