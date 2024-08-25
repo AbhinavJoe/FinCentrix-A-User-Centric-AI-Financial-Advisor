@@ -24,5 +24,18 @@
 - This repo shows only the frontend of the project. The LLM Backend is running as a standalone backend service on Azure VM, to which the frontend makes requests and gets responses.
 - This structure prevents no data leakage ensuing user data security and privacy.
 
+## Screenshots
+### Desktop
+![Login](https://github.com/user-attachments/assets/2b6d3877-a91c-45b3-bb18-cba169ec1cdf)
+![Disclaimer](https://github.com/user-attachments/assets/a9b70b80-ef98-4bc4-99cf-ca906852fc60)
+![Questionairre](https://github.com/user-attachments/assets/290b87f2-ee36-4341-bd80-ee5ebb45742d)
+![Chat Page](https://github.com/user-attachments/assets/6f7fafd5-c3a9-421d-b7fc-8d5e2efbecce)
+
+### Mobile Devices
+![Mobile Login](https://github.com/user-attachments/assets/7fadd46b-272e-42cb-91f2-2b61aea189ea)
+![Mobile Disclaimer](https://github.com/user-attachments/assets/6e48d6df-7a55-4bce-a75d-71e59e4f414e)
+![Mobile Questionairre](https://github.com/user-attachments/assets/a0e560c6-eebf-4a5e-a3be-97d0d6cc0af2)
+![Mobile Chat Page](https://github.com/user-attachments/assets/a5e454d1-8633-4086-840a-00994f0ab418)
+
 ## License
 - The project is licened under the MIT License.
