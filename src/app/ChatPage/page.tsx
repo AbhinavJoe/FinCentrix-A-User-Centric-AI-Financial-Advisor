@@ -44,7 +44,9 @@ const Page = () => {
             }
 
             const data = await res.json();
-            const aiResponse = <AiMessage text={data.messages} />;
+            // const aiResponse = <AiMessage text={data.messages} />;
+            // const aiResponse = <AiMessage text={data.message.content} />; ollama response
+            const aiResponse = <AiMessage text={data.choices[0]?.message?.content} />; // groq api response
             setElements((prevElements) => [...prevElements, aiResponse]);
         } catch (error) {
             console.error('Error:', error);
