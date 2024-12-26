@@ -37,5 +37,8 @@
 ![Mobile Questionairre](https://github.com/user-attachments/assets/a0e560c6-eebf-4a5e-a3be-97d0d6cc0af2)
 ![Mobile Chat Page](https://github.com/user-attachments/assets/a5e454d1-8633-4086-840a-00994f0ab418)
 
+## Contributing
+This project is open to contributions. If you want to take this further and collaborate with me on making this better (as some features are still left) reach out on LinkedIn - https://www.linkedin.com/in/abhinavjoe/
+
 ## License
 - The project is licened under the MIT License.
