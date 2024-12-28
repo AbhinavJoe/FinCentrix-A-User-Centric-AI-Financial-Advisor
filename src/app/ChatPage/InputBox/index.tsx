@@ -28,11 +28,13 @@ const InputBox: React.FC<InputBoxProps> = ({ addUserMessage, isDisabled }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="flex h-[3.125rem] grow bg-[#393937]/60 items-center md:px-4 px-2 border-2 border-[#43443f] rounded-xl">
-            <input required type="text" onChange={changeInput} value={inputValue} className="grow bg-transparent outline-none text-lg" placeholder="Type here..." />
-            <button type='submit' disabled={isDisabled}>
-                <RiSendPlaneFill className={`text-xl ${isDisabled ? "opacity-50" : null}`} />
-            </button>
+        <form onSubmit={handleSubmit} className="fixed h-[3.125rem] w-[55%] bottom-0 bg-[#3d3e39] md:px-4 px-2 border-2 border-[#43443f] rounded-xl">
+            <div className="flex h-full justify-center">
+                <input required type="text" onChange={changeInput} value={inputValue} className="grow bg-transparent outline-none text-lg" placeholder="Type here..." />
+                <button type='submit' disabled={isDisabled}>
+                    <RiSendPlaneFill className={`text-xl ${isDisabled ? "opacity-50" : null}`} />
+                </button>
+            </div>
         </form >
     );
 };

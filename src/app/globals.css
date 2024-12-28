@@ -35,15 +35,14 @@ body {
 }
 
 .scroll-container::-webkit-scrollbar {
-    width: 6px;
+    width: 10px;
     background: #2c2b27;
-    border-radius: 6px;
+    border-radius: 10px;
 }
 
 .scroll-container::-webkit-scrollbar-thumb {
-    background: silver;
-    border-radius: 6px;
-
+    background: rgb(121, 117, 117);
+    border-radius: 10px;
 }
 
 .scroll-container::-webkit-scrollbar-thumb:hover {
