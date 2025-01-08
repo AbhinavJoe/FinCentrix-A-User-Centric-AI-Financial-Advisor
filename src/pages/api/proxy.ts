@@ -24,7 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         if (!response.ok) {
             const errorText = await response.text();
-            console.error('Error response from backend:', errorText);
+            console.error('Backend is either down or not working, with error:', errorText);
             throw new Error(`Network response was not ok: ${response.status}`);
         }
 
