@@ -2,7 +2,6 @@ import { useRouter } from 'next/navigation';
 import React, { useCallback, useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import FinancialNews from '@/app/ChatPage/SideBar/FinancialNews/index';
 
 type UserData = {
     age: string;
@@ -16,16 +15,9 @@ type UserData = {
     retirementAge: string;
 }
 
-type ExchangeRate = {
-    rate: string;
-    fromCurrency: string;
-    toCurrency: string;
-}
-
 const SideBar = ({ username }: { username: string }) => {
     const router = useRouter();
     const [userData, setUserData] = useState<UserData | null>(null);
-    const [exchangeRate, setExchangeRate] = useState<ExchangeRate | null>(null);
     const [loading, setLoading] = useState(true);
 
     // Logout handler
@@ -73,34 +65,12 @@ const SideBar = ({ username }: { username: string }) => {
         fetchData();
     }, [username, handleLogout]);
 
-    // Fetch currency exchange rate
-    useEffect(() => {
-        const apiKeyCurrency = process.env.ALPHAVANTAGE_API_KEY;
-        const fetchCurrencyRate = async () => {
-            const url = `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=INR&apikey=${apiKeyCurrency}`;
-            try {
-                const response = await fetch(url);
-                if (!response.ok) throw new Error('Failed to fetch exchange rate');
-                const data = await response.json();
-                const rateInfo = data["Realtime Currency Exchange Rate"];
-                setExchangeRate({
-                    rate: rateInfo["5. Exchange Rate"],
-                    fromCurrency: rateInfo["1. From_Currency Code"],
-                    toCurrency: rateInfo["3. To_Currency Code"]
-                });
-            } catch (error) {
-                console.error('Failed to fetch exchange rate:', error);
-            }
-        };
-
-        fetchCurrencyRate();
-    }, []);
-
-    if (loading) return <div className='bg-[#393937]/60 flex flex-col gap-2 shadow-xl p-4 h-[100vh] border-r-2 border-[#43443f]'>Loading...</div>;
+    if (loading) return <div className='bg-[#3d3e39] flex flex-col justify-end gap-2 shadow-xl p-4 h-[100vh] border-r-2 border-[#43443f]'>Loading...</div>;
 
     return (
-        <div className="bg-[#393937]/60 flex flex-col gap-3 shadow-xl px-4 h-[100vh] border-r-2 border-[#43443f]">
-            <ToastContainer />
+        <div className="bg-[#3d3e39] flex flex-col justify-between gap-3 shadow-xl px-4 pb-4 h-full border-r-2 border-[#43443f] z-1">
+            {/* <ToastContainer /> */}
+            <span className="font-bold md:text-2xl text-lg text-[#da7756]/70 hover:cursor-pointer hover:text-[#da7756] pt-4">FinCentrix</span>
             <div className='h-fit'>
                 <h3 className="text-xl font-bold mb-4 underline">Your Information</h3>
                 <div className='scroll-container overflow-y-auto h-[30vh]'>
@@ -118,15 +88,6 @@ const SideBar = ({ username }: { username: string }) => {
                         </>
                     )}
                 </div>
-            </div>
-            <div className='h-fit'>
-                <h3 className="font-bold text-xl mb-2 underline">Banking Details</h3>
-                {exchangeRate && (
-                    <div className="mb-2 font-bold">
-                        <h3>Exchange Rate ({exchangeRate.fromCurrency} to {exchangeRate.toCurrency}): {exchangeRate.rate}</h3>
-                    </div>
-                )}
-                <FinancialNews />
             </div>
         </div>
     );

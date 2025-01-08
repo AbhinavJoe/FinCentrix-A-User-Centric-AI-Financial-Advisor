@@ -6,9 +6,9 @@ const NavBar = () => {
     const searchParams = useSearchParams();
     const username = searchParams?.get('username');
     return (
-        <div className="flex justify-between items-center top-2 w-full h-fit bg-[#393937]/60 px-4 border-b-2 border-[#43443f]">
-            <span className="font-semibold md:text-xl text-lg text-[#da7756]/70 hover:cursor-pointer hover:text-[#da7756]" onClick={() => router.push(`/Dashboard?username=${username}`)}>Back to Dashboard</span>
-            <div className="">
+        <div className="fixed flex justify-end w-full h-fit px-4 top-2 z-10">
+            {/* <span className="font-semibold md:text-xl text-lg text-[#da7756]/70 hover:cursor-pointer hover:text-[#da7756]" onClick={() => router.push(`/Dashboard?username=${username}`)}>Back to Dashboard</span> */}
+            <div className="left-3 top-2">
                 <Logout page="" />
             </div>
         </div>
